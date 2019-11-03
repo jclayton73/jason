@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JASON</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+
+		var set = [
+				{
+					"title":"Amish Paradise",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Rap"],
+					"year": 1996
+				},
+				{
+					"title":"Lasagna",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Pop"],
+					"year": 1988
+				},
+				{
+					"title":"(This Song's Just) Six Words Long",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Pop"],
+					"year":1988
+				},
+				{
+					"title":"Don't Wear Those Shoes",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Rock"],
+					"year":1986
+				},
+				{
+					"title":"Smells Like Nirvana",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Punk"],
+					"year":1992
+				},
+				{
+					"title":"Bob",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Blues"],
+					"year":2003
+				},
+				{
+					"title":"Angry White Boy Polka",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Polka"],
+					"year":2003
+				},
+				{
+					"title":"NOW That's What I Call Polka",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Polka"],
+					"year":2014
+				},
+				{
+					"title":"Canadian Idiot",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Punk"],
+					"year":2006
+				},
+				{
+					"title":"Germs",
+					"artist":["Weird Al Yankovic"],
+					"genre":["Parody", "Rock"],
+					"year":1999
+				}
+			]
+
+			$(document).ready(function(){
+				for (var i = 0; i < set.length; i++) 
+					printSong(set[i])
+			})
+			
+			function printSong(s){
+
+				$('#x').append("<h1>" + s.title + "</h1>")
+				var info = "Artist: "
+				
+				for (var a = 0; a < s.artist.length-1; a++) {
+					info += (s.artist[a] + ", ")
+				}
+			
+				info += s.artist[(s.artist.length-1)]
+
+				$('#x').append('<p>' + info)
+
+
+				info = "Genre: "
+
+				for (var a = 0; a < s.genre.length-1; a++) {
+					info += (s.genre[a] + ", ")
+				}
+			
+				info += s.genre[(
+					s.genre.length-1)]
+
+				$('#x').append('<p>' + info)
+
+				$('#x').append('<p>Year: ' + s.year)
+
+			}
+
+			function display() {
+
+				$('#x').empty()
+
+				var g = $('#genre').val();
+
+		
+				for (var i = 0; i < set.length; i++) {
+					for (var j = 0 ; j < set[i].genre.length ; j++){
+						if (set[i].genre[j] == g)
+							printSong(set[i])
+					}
+				
+				}
+			}
+
+	</script>
+
+</head>
+<body>
+
+	<form>
+		<select onchange="display()" id="genre" value="select">
+			<option value="All" selected disabled hidden>Select a genre</option>
+			<option value="Parody">Parody</option>
+			<option value="Punk">Punk</option>
+			<option value="Polka">Polka</option>
+			<option value="Pop">Pop</option>
+			<option value="Rock">Rock</option>
+			<option value="Rap">Rap</option>
+			<option value="Blues">Blues</option>
+		</select>
+	</form>
+
+	<div id="x"/>
+
+
+</body>
+</html>
